@@ -159,7 +159,7 @@ trait PermissionsBasedAuthTrait
 	 *
 	 * @throws \Illuminate\Auth\Access\AuthorizationException
 	 */
-	public function authorizeTo(Request $request, $ability)
+	public function authorizeTo(Request $request, string $ability): void
 	{
 		throw_unless($this->authorizedTo($request, $ability), AuthorizationException::class);
 	}
@@ -172,12 +172,12 @@ trait PermissionsBasedAuthTrait
 	 *
 	 * @return bool
 	 */
-	public function authorizedTo(Request $request, $ability)
+	public function authorizedTo(Request $request, string $ability): void
 	{
 		return static::authorizable() ? static::hasPermissionsTo($request, $ability) : true;
 	}
 
-	public static function hasPermissionsTo(Request $request, $ability)
+	public static function hasPermissionsTo(Request $request, string $ability): void
 	{
 	
 		if($request->GetRequestUri()==config('nova.path')."/login" || $request->GetRequestUri()==config('nova.path')."/password/reset"){
