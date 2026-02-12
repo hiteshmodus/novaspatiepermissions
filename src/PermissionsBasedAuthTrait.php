@@ -172,7 +172,7 @@ trait PermissionsBasedAuthTrait
 	 *
 	 * @return bool
 	 */
-	public function authorizedTo(Request $request, string $ability): void
+	public function authorizedTo(Request $request, $ability): bool
 	{
 		return static::authorizable() ? static::hasPermissionsTo($request, $ability) : true;
 	}
