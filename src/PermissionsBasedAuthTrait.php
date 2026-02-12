@@ -177,7 +177,7 @@ trait PermissionsBasedAuthTrait
 		return static::authorizable() ? static::hasPermissionsTo($request, $ability) : true;
 	}
 
-	public static function hasPermissionsTo(Request $request, string $ability): void
+	public static function hasPermissionsTo(Request $request, $ability): bool
 	{
 	
 		if($request->GetRequestUri()==config('nova.path')."/login" || $request->GetRequestUri()==config('nova.path')."/password/reset"){
